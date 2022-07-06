@@ -1,12 +1,12 @@
 class Node {
   // defines contructor with one paramerter and defining the next Node
-  constructor(node) {
-    this.node = node;
+  constructor(data) {
+    this.data = data;
     this.next = null;
   }
 
   // allocating or specifying(pointing) the next node
-  nextNode(node) {
+  setNextNode(node) {
     // to check weither the next node is an instance of this class if not throws an error
     if (node instanceof Node || node === null) {
       this.next = node;
@@ -16,22 +16,21 @@ class Node {
   }
 
   // to get the nodes data
-  getNode() {
-    return this.node;
-  }
-}
-class NewNode {
-  constructor(node) {
-    this.node = node;
-    this.next = null;
+  getNextNode() {
+    return this.next;
   }
 }
 
-frstNode = new Node(1);
-scndNode = new Node(2);
-trdNode = new NewNode(4);
+const strawberryNode = new Node("Berry Tasty");
+const vanillaNode = new Node("Vanilla");
+const coconutNode = new Node("Coconuts for Coconut");
 
-frstNode.nextNode(scndNode);
-scndNode.nextNode(trdNode);
+vanillaNode.setNextNode(strawberryNode);
+strawberryNode.setNextNode(coconutNode);
 
-console.log(frstNode);
+let currentNode = vanillaNode;
+while (currentNode) {
+  console.log(currentNode.data);
+  currentNode = currentNode.getNextNode();
+}
+console.log(vanillaNode.getNextNode());
